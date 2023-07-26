@@ -4,7 +4,7 @@
 MasterState::MasterState(App& app):
 app{app} {}
 
-void MasterState::Input() {
+void MasterState::Update() {
     if(app.stateMan.cState == app.stateMan.states["test"].get() ||
     app.stateMan.cState == app.stateMan.states["test2"].get()) {
         if(IsKeyPressed('1')) {
@@ -15,8 +15,4 @@ void MasterState::Input() {
             app.stateMan.cState = app.stateMan.states["test2"].get();
         }
     }
-}
-
-void MasterState::Update() {
-
 }

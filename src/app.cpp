@@ -43,9 +43,6 @@ int App::Run() {
     while(!WindowShouldClose() && shouldRun) {
         ClearBackground(BLACK);
 
-        stateMan.states["master"].get()->Input();
-        stateMan.cState->Input();
-        
         stateMan.states["master"].get()->Update();
         stateMan.cState->Update();
 

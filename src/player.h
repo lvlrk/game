@@ -1,14 +1,15 @@
 #pragma once
 
 #include <string>
-#include "vec.h"
+#include <glm/vec2.hpp>
 
 class Player {
 public:
     Player(const std::string& name);
-
-    friend class TestPlayState;
+    void Update();
+    void Draw();
 private:
     const std::string name;
-    Vec2 position;
+    glm::vec2 position;
+    float moveSpeed = 200.0f;
 };

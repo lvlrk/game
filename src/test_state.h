@@ -6,7 +6,6 @@
 class TestState: public State {
 public:
     TestState(const std::string& text);
-    void Input();
     void Update();
     void Draw();
 private:

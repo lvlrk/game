@@ -4,10 +4,6 @@
 TestState::TestState(const std::string& text):
 text{text} {}
 
-void TestState::Input() {
-
-}
-
 void TestState::Update() {
 
 }

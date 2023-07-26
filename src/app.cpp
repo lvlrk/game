@@ -4,6 +4,7 @@
 #include "app.h"
 #include "test_state.h"
 #include "master_state.h"
+#include "test_play_state.h"
 
 App::ProgInfo::ProgInfo(const std::string& name,
                        int versionMax, int versionMid,
@@ -22,7 +23,7 @@ void App::ProgInfo::Print() {
 App::App(int argc, char **argv):
     argc{argc},
     argv{argv},
-info("game", 0, 0, 1) {
+info("game", 0, 1, 1) {
     for(int i = 1; i < argc; i++) {
         args.resize(i);
         args[i - 1] = argv[i];
@@ -31,8 +32,9 @@ info("game", 0, 0, 1) {
     stateMan.states["master"] = std::unique_ptr<MasterState>(new MasterState(*this));
     stateMan.states["test"] = std::unique_ptr<State>(new TestState("dick"));
     stateMan.states["test2"] = std::unique_ptr<State>(new TestState("ass"));
+    stateMan.states["testPlay"] = std::unique_ptr<State>(new TestPlayState);
 
-    stateMan.cState = std::move(stateMan.states["test"]).get();
+    stateMan.cState = stateMan.states["testPlay"].get();
 }
 
 int App::Run() {

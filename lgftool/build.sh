@@ -2,8 +2,8 @@
 
 CXX="g++"
 CXXFLAGS="-g"
-LDFLAGS="-lraylib -lfmt -lz"
-TARGET="game"
+LDFLAGS="-lz"
+TARGET="lgftool"
 
 rm -f *.o $TARGET
 

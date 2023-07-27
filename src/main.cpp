@@ -19,17 +19,27 @@ int main(int argc, char **argv) {
 #include <iostream>
 #include "legf.h"
 
-int main() {
-    Legf legf;
+int main(int argc, char **argv) {
+    int read = 1;
 
-    //Legf::Entry entry;
-    //entry.FromFile("cloud99.wav", Legf::RES_AUDIO);
+    if(!read) {
+        Legf legf;
 
-    //legf.entries.push_back(entry);
+        Legf::Entry entry;
 
-    //legf.Write("res.lgf");
+        for(int i = 1; i < argc; i++) {
+            entry.FromFile(argv[i]);
+            entry.Compress(Legf::COMP_ZLIB);
 
-    if(legf.Read("res.lgf")) std::cerr << "uh oh\n";
+            legf.entries.push_back(entry);
+        }
+
+        if(legf.Write("res.lgf")) std::cerr << "Legf write error\n";
+    } else {
+        Legf legf;
+
+        if(legf.Read("res.lgf")) std::cerr << "Legf read error\n";
+    }
 
     return 0;
 }

@@ -40,7 +40,7 @@ info("game", 0, 1, 1) {
 
     InitAudioDevice();
 
-    musicMan.music["cloud99"] = std::unique_ptr<MusicWrapper>(new MusicWrapper("cloud99.wav", res));
+    musicMan.music["cloud99"] = std::unique_ptr<MusicWrapper>(new MusicWrapper("cloud99.mp3", res));
 
     musicMan.cMusic = musicMan.music["cloud99"].get();
     musicMan.cMusic->play = true;

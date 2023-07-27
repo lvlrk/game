@@ -10,6 +10,4 @@ void TestPlayState::Update() {
 
 void TestPlayState::Draw() {
     player.Draw();
-
-    // DrawText(TextFormat("Now Playing: %s", ))
 }

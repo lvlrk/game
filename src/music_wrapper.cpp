@@ -5,7 +5,7 @@ MusicWrapper::MusicWrapper(const std::string& filename, Legf& res):
 res{res} {
     for(const Legf::Entry& entry: res.entries) {
         if(entry.filename == filename) {
-            music = LoadMusicStreamFromMemory(".wav", reinterpret_cast<const unsigned char*>(&entry.data[0]), entry.dataSize);
+            music = LoadMusicStreamFromMemory(".mp3", reinterpret_cast<const unsigned char*>(&entry.data[0]), entry.dataSize);
 
             ok = (music.stream.buffer != nullptr);
 

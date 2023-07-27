@@ -2,7 +2,7 @@
 
 CXX="g++"
 CXXFLAGS="-c -g"
-LDFLAGS="-lraylib -lfmt"
+LDFLAGS="-lraylib -lfmt -lz"
 TARGET="game"
 
 rm -f *.o $TARGET

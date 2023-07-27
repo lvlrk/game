@@ -29,12 +29,21 @@ info("game", 0, 1, 1) {
         args[i - 1] = argv[i];
     }
 
+    res.Read("res.lgf");
+
     stateMan.states["master"] = std::unique_ptr<MasterState>(new MasterState(*this));
     stateMan.states["test"] = std::unique_ptr<State>(new TestState("dick"));
     stateMan.states["test2"] = std::unique_ptr<State>(new TestState("ass"));
     stateMan.states["testPlay"] = std::unique_ptr<State>(new TestPlayState);
 
     stateMan.cState = stateMan.states["testPlay"].get();
+
+    InitAudioDevice();
+
+    musicMan.music["cloud99"] = std::unique_ptr<MusicWrapper>(new MusicWrapper("cloud99.wav", res));
+
+    musicMan.cMusic = musicMan.music["cloud99"].get();
+    musicMan.cMusic->play = true;
 }
 
 int App::Run() {
@@ -43,6 +52,8 @@ int App::Run() {
     while(!WindowShouldClose() && shouldRun) {
         ClearBackground(BLACK);
 
+        musicMan.cMusic->Update();
+
         stateMan.states["master"].get()->Update();
         stateMan.cState->Update();
 
@@ -50,6 +61,8 @@ int App::Run() {
             stateMan.cState->Draw();
         EndDrawing();
     }
+
+    CloseAudioDevice();
 
     CloseWindow();
 

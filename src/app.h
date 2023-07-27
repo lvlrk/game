@@ -2,6 +2,8 @@
 
 #include <vector>
 #include "state_manager.h"
+#include "music_manager.h"
+#include "legf.h"
 
 class App {
 public:
@@ -32,4 +34,6 @@ public:
     friend class MasterState; // let MasterState access *all* members
 private:
     StateManager stateMan;
+    MusicManager musicMan; // MUSIC MAN!?!
+    Legf res; // internal resource file
 };
